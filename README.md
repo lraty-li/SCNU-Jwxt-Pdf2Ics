@@ -45,6 +45,7 @@ npm run StartServer
 
 ## 感谢
 
+- [课程表](https://github.com/iscnu/scnu-schedule-ical-jwxt)
 - [pdf2json](https://github.com/modesty/pdf2json) 解析pdf并提取出位置信息
 - [ics.js](https://github.com/nwcell/ics.js)生成ics文件
 - 感谢[大佬](https://github.com/Okami-2)在我摸得正欢的时候突然发来整理pdf数据的JSON2Array.js
