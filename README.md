@@ -3,7 +3,7 @@
 将华南师范大学教务系统输出的列表形式pdf转为ics文件
 
 ## 写在前面
-
+![](if_it_works_don_t_touch.jpg)
 仅用于展示想法，代码也仅仅是能跑的程度
 刚好在11月14日，为了避免手动输入学期起止日期而使用的教务网的[api](http://module.scnu.edu.cn/api.php?op=jw_date)404了
 
