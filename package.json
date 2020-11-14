@@ -1,0 +1,13 @@
+{
+  "requires": true,
+  "lockfileVersion": 1,
+  "dependencies": {
+    "formidable": "^1.2.2",
+    "live-server": "^1.2.1",
+    "pdf2json": "^1.2.0"
+  },
+  "scripts": {
+    "StartServer": "node Server.js",
+    "StartPage": "live-server --ignorePattern=./UserUpLoadFile/* --entry-file=./Page/Upload.html"
+  }
+}

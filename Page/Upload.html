@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="module" src="./Page/ics.min.js"></script>
+    <!-- <script type="module" src="./rrule.min.js"></script> -->
+    <script type="module" src="./Page/main.js"></script>
+</head>
+
+<body>
+    <!-- <a href="https://jwxt.scnu.edu.cn/kbcx/xskbcx_cxXskbcxIndex.html">这里</a> -->
+    <P>目前仅在win10自带日历下测试成功<br>从“教务网-信息查询-学生课表查询”下载pdf，请选择<strong>列表</strong>模式</P>
+    <img src="./Page/koko.png"  alt="选择列表模式" /><br>
+    <input id="UpLoadFile" accept=".pdf" type="file">
+
+
+    <select id="CampusSelect">
+        <option value="StoneBrand" selected>石牌</option>
+        <option value="BigLearnCity">大学城</option>
+        <option value="SouthSea">南海</option>
+    </select>
+    <button>提交</button>
+    <p id="p1"></p>
+
+</body>
+
+</html>
