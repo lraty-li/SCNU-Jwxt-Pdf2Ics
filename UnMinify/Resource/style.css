@@ -1,0 +1,101 @@
+input {
+    width: 20vw;
+    margin: 2vh;
+    font-size: 2vh;
+}
+
+input[type="radio"]{
+    display: inline;
+}
+
+.container::before {
+    content: "1";
+    color: #EEE;
+    font-size: 2vw;
+    display: inline-block;
+    vertical-align: middle;
+    height: 100%;
+}
+
+.container::after {
+    content: "25";
+    color: #EEE;
+    font-size: 2vw;
+    display: inline-block;
+    vertical-align: middle;
+    height: 100%;
+}
+
+body {
+    font-family: Calibri, Arial;
+    background-color: #344955;
+    padding: 0;
+    margin: 10vh auto;
+    overflow: hidden;
+    text-align: center;
+    background-image: url('./Img/NiceToMeetYou1.png');
+    background-size: cover;
+
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+}
+
+button {
+    font-size: 1.5vw;
+}
+
+p {
+    color: #EEE;
+    font-size: 2vw;
+    display: inline;
+}
+
+div{
+    margin: .5vh;
+}
+
+select {
+    font-size: 1.5vw;
+}
+
+.animate {
+    display: block;
+    padding-left: 20px;
+    font-size: 12px;
+    white-space: nowrap;
+    font-size: 2vw;
+    color: #EEE;
+    background-color: black;
+    animation: 10s wordsLoop linear infinite alternate;
+    position: fixed;
+    left: 0px;
+    bottom: 0px;
+    width: 50%;
+    height: 50px;
+    z-index: -1
+}
+
+@keyframes wordsLoop {
+    0% {
+        transform: translateX(0px);
+        -webkit-transform: translateX(0px);
+    }
+
+    100% {
+        transform: translateX(100%);
+        -webkit-transform: translateX(100%);
+    }
+}
+
+@-webkit-keyframes wordsLoop {
+    0% {
+        transform: translateX(0px);
+        -webkit-transform: translateX(0px);
+    }
+
+    100% {
+        transform: translateX(100%);
+        -webkit-transform: translateX(100%);
+    }
+}
