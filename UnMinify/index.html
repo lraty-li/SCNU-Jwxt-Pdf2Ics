@@ -5,18 +5,15 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <script src="./Resource/Javascript/bundle.js"></script>
-    <!-- <script src="https://cdn.bootcdn.net/ajax/libs/pdf.js/2.6.347/pdf.js"></script>
-    <script src="https://cdn.bootcdn.net/ajax/libs/pdf.js/2.6.347/pdf.worker.js"></script> -->
-    <script src="https://cdn.bootcdn.net/ajax/libs/pdf.js/2.6.347/pdf.min.js"></script>
-    <script src="https://cdn.bootcdn.net/ajax/libs/pdf.js/2.6.347/pdf.worker.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@2.6.347/build/pdf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@2.6.347/build/pdf.worker.min.js"></script>
     <script type="module" src="./Resource/Javascript/main.js"></script>
     <link type="text/css" rel="stylesheet" charset="UTF-8" href="./Resource/style.css">
 </head>
 
 <body>
-    <!-- <a href="https://jwxt.scnu.edu.cn/kbcx/xskbcx_cxXskbcxIndex.html">这里</a> -->
     <div>
-        <P>目前仅支持<strong>列表</strong>模式，从“教务网-信息查询-学生课表查询”下载pdf</P>
+        <P>目前仅支持<strong>列表</strong>模式，从“<a href="https://jwxt.scnu.edu.cn/kbcx/xskbcx_cxXskbcxIndex.html">教务网</a>-信息查询-学生课表查询”下载pdf</P>
     </div>
     <img src="./Resource/Img/koko.png" alt="选择列表模式" /><br>
     <input id="UpLoadFileInput" accept=".pdf" type="file">
@@ -47,7 +44,6 @@
     </div>
 
     <p style="display: inline;">当前教学周:</p>
-    <!-- todo显示大小 -->
     <input id="output" type="number" for="rangeInput" value="2" onchange="rangeInput.value=output.value">
     <button>提交</button><br>
     <canvas id="pdfCanvas"></canvas>
@@ -63,11 +59,11 @@
             console.log("include",name,"fail");
             var script = document.createElement('script');
             script.src = IfNoloadUrl;
+            script.type="javascript";
             document.body.appendChild(script);
         }
-        // isInclude("","./Resource/Javascript/bundle.js");
-        isInclude("https://cdn.bootcdn.net/ajax/libs/pdf.js/2.6.347/pdf.min.js","./Resource/pdfjs-2.6.347-dist/build/pdf.js");
-        isInclude("https://cdn.bootcdn.net/ajax/libs/pdf.js/2.6.347/pdf.worker.min.js","./Resource/pdfjs-2.6.347-dist/build/pdf.worker-min.js");
+        isInclude("https://cdn.jsdelivr.net/npm/pdfjs-dist@2.6.347/build/pdf.min.js","./Resource/Javascript/pdfjs-2.6.347-dist/build/pdf.js");
+        isInclude("https://cdn.jsdelivr.net/npm/pdfjs-dist@2.6.347/build/pdf.worker.min.js","./Resource/Javascript/pdfjs-2.6.347-dist/build/pdf.worker-min.js");
     </script>
 </body>
 

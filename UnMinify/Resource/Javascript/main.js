@@ -44,11 +44,9 @@ pdfjsLib.GlobalWorkerOptions.workerSrc = pdfjsLibHome + 'build/pdf.worker-min.js
 
 //预览pdf，同时获取数据
 document.getElementById('UpLoadFileInput').onchange = function (event) {
-    console.log("changed")
     var file = event.target.files[0];
     var fileReader = new FileReader();
     fileReader.onload = function (event) {
-        console.log(event.target.result)
         var typedarray = new Uint8Array(this.result);
 
         const loadingTask = pdfjsLib.getDocument({
@@ -116,8 +114,9 @@ document.getElementById('UpLoadFileInput').onchange = function (event) {
                             "str": item.str
                         });
                     });
-                    console.log(TextItemArr)
+                    console.log("Got TextItemArr",TextItemArr);
                     SortedData = GetMsg(TextItemArr);
+                    console.log("Got SortedData",TextItemArr);
                 });
 
                 var canvas = document.getElementById('pdfCanvas');
