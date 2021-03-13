@@ -1,9 +1,7 @@
 //=====todo=readme 询问上传，恢复空课室
 //=====todo 小程序 选择聊天(打印店、印萌自主打印小程序) 
-//====todo 项目改名 SCNU-Jwxt-pdf2js
 // 兼容vcs 1.0
 
-// 修改bundle依赖从moment为day.js
 import {
     GetMsg
 } from "./GetMsg.js";
@@ -173,7 +171,7 @@ function UpLoadFile() {
     };
     var CourseSessionsMatch = CampusSelect[document.getElementById("CampusSelect").value];
 
-    //==============todo 添加网页控件 调节当前教学周和总教学周数，非法输入再弹框。
+    //==============todo 非法输入弹框。
     var TeachingWeekCurr = parseInt(document.getElementById("rangeInput").value);
 
 
