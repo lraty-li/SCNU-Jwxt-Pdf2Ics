@@ -1,17 +1,19 @@
 input {
-    width: 20vw;
-    margin: 2vh;
-    font-size: 2vh;
-}
+    width: 20rem;
+    margin: 3vh;
+    font-size: 3rem;
+    width: 50vw;
 
-input[type="radio"]{
-    display: inline;
+}
+input[type="file"]{
+    color: #EEE;
+    width: auto;
 }
 
 .container::before {
     content: "1";
     color: #EEE;
-    font-size: 2vw;
+    font-size: 3rem;
     display: inline-block;
     vertical-align: middle;
     height: 100%;
@@ -20,7 +22,7 @@ input[type="radio"]{
 .container::after {
     content: "25";
     color: #EEE;
-    font-size: 2vw;
+    font-size: 3rem;
     display: inline-block;
     vertical-align: middle;
     height: 100%;
@@ -31,7 +33,7 @@ body {
     background-color: #344955;
     padding: 0;
     margin: 10vh auto;
-    overflow: hidden;
+    /* overflow: hidden; */
     text-align: center;
     background-image: url('./Img/NiceToMeetYou1.png');
     background-size: cover;
@@ -42,21 +44,21 @@ body {
 }
 
 button {
-    font-size: 1.5vw;
+    font-size: 3rem;
 }
 
 p {
     color: #EEE;
-    font-size: 2vw;
+    font-size: 3rem;
     display: inline;
 }
 
 div{
-    margin: .5vh;
+    margin: 2.5vh;
 }
 
 select {
-    font-size: 1.5vw;
+    font-size: 3rem;
 }
 
 .animate {

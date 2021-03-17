@@ -5,17 +5,20 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <script src="./Resource/Javascript/bundle.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@2.6.347/build/pdf.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@2.6.347/build/pdf.worker.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@2.6.347/es5/build/pdf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@2.6.347/es5/build/pdf.worker.min.js"></script>
     <script type="module" src="./Resource/Javascript/main.js"></script>
+    <!-- <script src="//cdn.bootcdn.net/ajax/libs/eruda/2.3.3/eruda.js"></script> -->
     <link type="text/css" rel="stylesheet" charset="UTF-8" href="./Resource/style.css">
+
 </head>
 
 <body>
-    <div>
-        <P>目前仅支持<strong>列表</strong>模式，从“<a href="https://jwxt.scnu.edu.cn/kbcx/xskbcx_cxXskbcxIndex.html">教务网</a>-信息查询-学生课表查询”下载pdf</P>
+    <!-- <div>
+        <P>目前仅支持<strong>列表</strong>模式，从“<a
+                href="https://jwxt.scnu.edu.cn/kbcx/xskbcx_cxXskbcxIndex.html">教务网</a>-信息查询-学生课表查询”下载pdf</P>
     </div>
-    <img src="./Resource/Img/koko.png" alt="选择列表模式" /><br>
+    <img src="./Resource/Img/koko.png" alt="选择列表模式" /><br> -->
     <input id="UpLoadFileInput" accept=".pdf" type="file">
 
     <div>
@@ -37,34 +40,39 @@
         <p>分钟</p>
     </div>
 
-    <!-- code by https://stackoverflow.com/users/2606013/harry -->
+    <p style="display: inline;">当前教学周:</p>
     <div class="container">
-        <input type="range" min="1" max="25" value="2" step="1" list="tickmarks" id="rangeInput"
+        <input type="range" min="1" max="25" value="3" step="1" list="tickmarks" id="rangeInput"
             oninput="output.value = rangeInput.value">
     </div>
 
-    <p style="display: inline;">当前教学周:</p>
-    <input id="output" type="number" for="rangeInput" value="2" onchange="rangeInput.value=output.value">
+    <input id="output" type="number" for="rangeInput" value="3" onchange="rangeInput.value=output.value">
     <button>提交</button><br>
     <canvas id="pdfCanvas"></canvas>
     <p class="animate">
-        ~欢迎光临~ ✦★ 最新更新日期:2021.3.10 ★✦ ~欢迎光临~
+        ~欢迎光临~ ✦★ 最新更新日期:2021.3.16 ★✦ ~欢迎光临~
     </p>
     <script>
-        function isInclude(name,IfNoloadUrl) {
+        function isInclude(name, IfNoloadUrl) {
             var js = /js$/i.test(name);
             var es = document.getElementsByTagName(js ? 'script' : 'link');
             for (var i = 0; i < es.length; i++)
                 if (es[i][js ? 'src' : 'href'].indexOf(name) != -1) return true;
-            console.log("include",name,"fail");
+            console.log("include", name, "fail");
             var script = document.createElement('script');
             script.src = IfNoloadUrl;
-            script.type="javascript";
+            script.type = "javascript";
             document.body.appendChild(script);
         }
-        isInclude("https://cdn.jsdelivr.net/npm/pdfjs-dist@2.6.347/build/pdf.min.js","./Resource/Javascript/pdfjs-2.6.347-dist/build/pdf.js");
-        isInclude("https://cdn.jsdelivr.net/npm/pdfjs-dist@2.6.347/build/pdf.worker.min.js","./Resource/Javascript/pdfjs-2.6.347-dist/build/pdf.worker-min.js");
+        isInclude("https://cdn.jsdelivr.net/npm/pdfjs-dist@2.6.347/es5/build/pdf.min.js",
+            "./Resource/pdfjs-2.6.347-dist/es5/build/pdf.min.js");
+        isInclude("https://cdn.jsdelivr.net/npm/pdfjs-dist@2.6.347/es5/build/pdf.worker.min.js",
+            "./Resource/pdfjs-2.6.347-dist/es5/build/pdf.worker.min.js");
     </script>
+    <!-- <script>
+        eruda.init();
+    </script> -->
+
 </body>
 
 </html>
