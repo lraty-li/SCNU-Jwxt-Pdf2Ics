@@ -2,9 +2,7 @@
 //=====todo 小程序 选择聊天(打印店、印萌自主打印小程序) 
 // 兼容vcs 1.0
 
-// import {
-//     GetMsg
-// } from "./GetMsg.js";
+// browserify -r -r ./_tools.js:ICalTools -r ./alarm.js:ICalAlarm -r ./attendee.js:ICalAttendee -r ./calendar.js:ICalCalendar   -r ./category.js:ICalCategory -r ./event.js:ICalEvent -r moment-timezone:moment ./ > bundle.js
 import {
     BetterGet
 } from "./BetterGet.js"
@@ -12,23 +10,14 @@ import {
     saveAs
 } from './FileSaver.js';
 
-// browserify -r -r ./_tools.js:ICalTools -r ./alarm.js:ICalAlarm -r ./attendee.js:ICalAttendee -r ./calendar.js:ICalCalendar   -r ./category.js:ICalCategory -r ./event.js:ICalEvent -r moment-timezone:moment ./ > bundle.js
-
-
 const ICalCalendar = require("ICalCalendar");
-let ical = new ICalCalendar({
-    domain: "jwxt.scnu.edu.cn",
-    timezone: "Asia/Hong_Kong",
-    url: "https://github.com/lraty-li/SCNU-Jwxt-Pdf2Ics"
-});
-ical.prodId("//LXJ&CZL//Jwxt_Pdf2Js//CN")
 let Day = new Date();
 
 
-let pdfjsLib = window['pdfjs-dist/build/pdf'];
 let pdfjsLibHome = "./Resource/pdfjs-2.6.347-dist/";
 let SortedData = {};
 
+let pdfjsLib = window['pdfjs-dist/build/pdf'];
 pdfjsLib.GlobalWorkerOptions.workerSrc = pdfjsLibHome + 'build/pdf.worker-min.js';
 
 
@@ -45,8 +34,6 @@ document.getElementById('UpLoadFileInput').onchange = function (event) {
             cMapPacked: true,
         });
         loadingTask.promise.then(pdf => {
-            // The document is loaded here...
-            //This below is just for demonstration purposes showing that it works with the moderen api
             console.log(pdf)
             pdf.getPage(1).then(function (page) {
                 console.log('Page loaded');
@@ -148,22 +135,127 @@ function UpLoadFile() {
     let AlarmPre = parseInt(document.getElementById("AlarmSelect").value);
 
     let ByDaysMatch = {
-        "星期一": {abb:"MO",num:0},
-        "星期二": {aab:"TU",num:1},
-        "星期三": {abb:"WE",num:2},
-        "星期四": {abb:"TH",num:3},
-        "星期五": {abb:"FR",num:4},
-        "星期六": {abb:"SA",num:5},
-        "星期日": {abb:"SU",num:6},
+        "星期一": {
+            abb: "MO",
+            num: 0
+        },
+        "星期二": {
+            aab: "TU",
+            num: 1
+        },
+        "星期三": {
+            abb: "WE",
+            num: 2
+        },
+        "星期四": {
+            abb: "TH",
+            num: 3
+        },
+        "星期五": {
+            abb: "FR",
+            num: 4
+        },
+        "星期六": {
+            abb: "SA",
+            num: 5
+        },
+        "星期日": {
+            abb: "SU",
+            num: 6
+        },
     }
     //课程开始结束时间
     //石牌、大学城、南海
+    // let CampusSelect = {
+    //     "StoneBrand": ["", "8:30", "9:20", "10:20", "11:10", "14:30", "15:20", "16:10", "17:00", "19:00", "19:50", "20:40", "21:30"],
+    //     "BigLearnCity&SouthSea": ["", "8:30", "9:20", "10:20", "11:10", "14:00", "14:50", "15:40", "16:30", "19:00", "19:50", "20:40", "21:30"],
+    // };
     let CampusSelect = {
-        "StoneBrand": ["", "8:30", "9:20", "10:20", "11:10", "14:30", "15:20", "16:10", "17:00", "19:00", "19:50", "20:40", "21:30"],
-        "BigLearnCity&SouthSea": ["", "8:30", "9:20", "10:20", "11:10", "14:00", "14:50", "15:40", "16:30", "19:00", "19:50", "20:40", "21:30"],
+        "StoneBrand": ["", {
+            Hour: 8,
+            Mins: 30
+        }, {
+            Hour: 9,
+            Mins: 20
+        }, {
+            Hour: 10,
+            Mins: 20
+        }, {
+            Hour: 11,
+            Mins: 10
+        }, {
+            Hour: 14,
+            Mins: 30
+        }, {
+            Hour: 15,
+            Mins: 20
+        }, {
+            Hour: 16,
+            Mins: 10
+        }, {
+            Hour: 17,
+            Mins: 0
+        }, {
+            Hour: 19,
+            Mins: 0
+        }, {
+            Hour: 19,
+            Mins: 50
+        }, {
+            Hour: 20,
+            Mins: 40
+        }, {
+            Hour: 21,
+            Mins: 30
+        }],
+        "BigLearnCity&SouthSea": ["", {
+            Hour: 8,
+            Mins: 30
+        }, {
+            Hour: 9,
+            Mins: 20
+        }, {
+            Hour: 10,
+            Mins: 20
+        }, {
+            Hour: 11,
+            Mins: 10
+        }, {
+            Hour: 14,
+            Mins: 30
+        }, {
+            Hour: 14,
+            Mins: 50
+        }, {
+            Hour: 15,
+            Mins: 40
+        }, {
+            Hour: 16,
+            Mins: 30
+        }, {
+            Hour: 19,
+            Mins: 0
+        }, {
+            Hour: 19,
+            Mins: 50
+        }, {
+            Hour: 20,
+            Mins: 40
+        }, {
+            Hour: 21,
+            Mins: 30
+        }],
     };
     try {
 
+        let ical = new ICalCalendar({
+            domain: "jwxt.scnu.edu.cn",
+            timezone: "Asia/Hong_Kong",
+            url: "https://github.com/lraty-li/SCNU-Jwxt-Pdf2Ics",
+            scale: "gregorian",
+            method: "publish",
+        });
+        ical.prodId("//LXJ&CZL//Jwxt_Pdf2Js//CN")
 
         let CourseSessionsMatch = CampusSelect[document.getElementById("CampusSelect").value];
 
@@ -173,33 +265,33 @@ function UpLoadFile() {
         // ical.clear();
         SortedData.Class.forEach(SortedDataClassItem => {
             //"1-2"
-            let CourseSessionsStart = CourseSessionsMatch[parseInt(SortedDataClassItem.Section.Start)].split(":");
-            let CourseSessionsEnd = CourseSessionsMatch[parseInt(SortedDataClassItem.Section.End)].split(":"); //should+40mins
+            let CourseSessionsStart = CourseSessionsMatch[parseInt(SortedDataClassItem.Section.Start)];
+            let CourseSessionsEnd = CourseSessionsMatch[parseInt(SortedDataClassItem.Section.End)]; //should+40mins
 
             //"1-11周，13-17周"
             //边界会设置事件
             let WeeksIntervalArray = SortedDataClassItem.Weeks;
             WeeksIntervalArray.forEach(WeeksIntervalArrayItem => {
                 //该课程共有教学周
-                let TeachingWeekSum = parseInt(WeeksIntervalArrayItem.End) - parseInt(WeeksIntervalArrayItem.Start) + 1;
-
+                //单周课程
+                let TeachingWeekSum = 1;
+                if (WeeksIntervalArrayItem.End != undefined) {
+                    TeachingWeekSum = parseInt(WeeksIntervalArrayItem.End) - parseInt(WeeksIntervalArrayItem.Start) + 1;
+                }
                 //[["1-11周","1","11"],[13-17周,"13","17"] 创新创业周？
                 let tmp = parseInt(WeeksIntervalArrayItem.Start) - TeachingWeekCurr;
-                tmp >= 0 ? tmp = tmp - 1 : null;
 
                 //回到课程开始那周的那天
                 Day = new Date();
-                Day.setDate(Day.getDate() - Day.getDay() + 1 + (tmp * 7)+ByDaysMatch[SortedDataClassItem.Week].num,);
-                Day.setHours(parseInt(CourseSessionsStart[0]), parseInt(CourseSessionsStart[1]), 0);
+                Day.setDate(Day.getDate() - Day.getDay() + 1 + (tmp * 7) + ByDaysMatch[SortedDataClassItem.Week].num);
+                Day.setHours(parseInt(CourseSessionsStart.Hour), parseInt(CourseSessionsStart.Mins), 0);
                 let CourseStartTimeDate = new Date(Day.valueOf());
-                console.log("CourseStartTimeDate",CourseStartTimeDate);
-                Day.setHours(parseInt(CourseSessionsEnd[0]), parseInt(CourseSessionsEnd[1]), 0);
+                Day.setHours(parseInt(CourseSessionsEnd.Hour), parseInt(CourseSessionsEnd.Mins), 0);
                 Day.setMinutes(Day.getMinutes() + 40);
                 let CourseEndTimeDate = new Date(Day.valueOf());
-
                 //前往教学周结束
+                console.log("TeachingWeekSum", TeachingWeekSum);
                 Day.setDate(Day.getDate() + (7 * TeachingWeekSum) - 1);
-                console.log("CourseEndTimeDate",CourseEndTimeDate);
                 //创建事件
                 console.log("adding", SortedDataClassItem.Name);
                 ical.events([{
@@ -208,10 +300,10 @@ function UpLoadFile() {
                     summary: SortedDataClassItem.Name,
                     description: SortedDataClassItem.OriginDetail,
                     location: SortedDataClassItem.Place,
-                    organizer: {
-                        email: "example@example.com",
-                        name: "教师:" + SortedDataClassItem.Teacher
-                    },
+                    // organizer: {
+                    //     email: "example@example.com",
+                    //     name: "教师:" + SortedDataClassItem.Teacher
+                    // },
                     repeating: {
                         freq: 'WEEKLY',
                         until: Day,
@@ -219,7 +311,7 @@ function UpLoadFile() {
                     },
                     alarms: [{
                         type: 'display',
-                        trigger: 60 * AlarmPre
+                        trigger: AlarmPre * 60
                     }]
 
                 }]);
@@ -227,9 +319,12 @@ function UpLoadFile() {
 
         });
         saveAs(ical.toBlob(), fileObj.files[0].name + ".ics");
+        console.log("ical", ical)
+        ical.clear();
     } catch (error) {
         console.error(error);
         alert(error);
     }
 }
+
 document.querySelector('button').addEventListener('click', UpLoadFile)
