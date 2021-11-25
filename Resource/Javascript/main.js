@@ -280,7 +280,8 @@ function UpLoadFile() {
                 }
                 //[["1-11周","1","11"],[13-17周,"13","17"] 创新创业周？
                 let tmp = parseInt(WeeksIntervalArrayItem.Start) - TeachingWeekCurr;
-
+                
+                //TODO bug: 星期日 getDay 返回0
                 //回到课程开始那周的那天
                 Day = new Date();
                 Day.setDate(Day.getDate() - Day.getDay() + 1 + (tmp * 7) + ByDaysMatch[SortedDataClassItem.Week].num);
