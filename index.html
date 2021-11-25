@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        function loadScript(url) {
+            let script = document.createElement('script');
+            if (script.readyState) { // IE
+                script.onreadystatechange = function () {
+                    if (script.readyState === 'loaded' || script.readyState === 'complete') {
+                        script.onreadystatechange = null;
+                    }
+                }
+            } else { // 其他浏览器
+                script.onload = function () {}
+            }
+            script.src = url;
+            document.getElementsByTagName('head')[0].appendChild(script);
+            console.log(url, "loaded");
+        }
+    </script>
+    <!-- <script src="//cdn.bootcdn.net/ajax/libs/eruda/2.3.3/eruda.js"></script> -->
+    <link type="text/css" rel="stylesheet" charset="UTF-8" href="./Resource/style.css">
+
+</head>
+
+<body>
+    <!-- <div>
+        <P>目前仅支持<strong>列表</strong>模式，从“<a
+                href="https://jwxt.scnu.edu.cn/kbcx/xskbcx_cxXskbcxIndex.html">教务网</a>-信息查询-学生课表查询”下载pdf</P>
+    </div>
+    <img src="./Resource/Img/koko.png" alt="选择列表模式" /><br> -->
+    <input id="UpLoadFileInput" accept=".pdf" type="file">
+
+    <div>
+        <p>请选择校区</p>
+        <select id="CampusSelect">
+            <option value="StoneBrand" selected>石牌</option>
+            <option value="BigLearnCity&SouthSea">大学城 或 南海</option>
+        </select>
+    </div>
+
+    <div>
+        <p>提前多少分钟提醒？</p>
+        <select id="AlarmSelect">
+            <option value="5">5</option>
+            <option value="10" selected>10</option>
+            <option value="15">15</option>
+            <option value="20">20</option>
+        </select>
+        <p>分钟</p>
+    </div>
+
+    <p style="display: inline;">当前教学周:</p>
+    <div class="container">
+        <input type="range" min="1" max="25" value="5" step="1" list="tickmarks" id="rangeInput"
+            oninput="output.value = rangeInput.value">
+    </div>
+
+    <input id="output" type="number" for="rangeInput" value="5" onchange="rangeInput.value=output.value">
+    <button>提交</button><br>
+    <canvas id="pdfCanvas"></canvas>
+    <p class="animate">
+        ~欢迎光临~ ✦★ 最新更新日期:2021.3.31 ★✦ ~欢迎光临~
+    </p>
+    <script src="./Resource/Javascript/bundle.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@2.6.347/es5/build/pdf.min.js"
+        onerror="loadScript('./Resource/pdfjs-2.6.347-dist/es5/build/pdf.min.js')"></script>
+    <script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@2.6.347/es5/build/pdf.worker.min.js"
+        onerror="loadScript('./Resource/pdfjs-2.6.347-dist/es5/build/pdf.worker.min.js')"></script>
+    <script type="module" src="./Resource/Javascript/main.js"></script>
+</body>
+
+</html>
