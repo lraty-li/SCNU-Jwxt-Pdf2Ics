@@ -222,7 +222,7 @@ function UpLoadFile() {
             Mins: 10
         }, {
             Hour: 14,
-            Mins: 30
+            Mins: 0
         }, {
             Hour: 14,
             Mins: 50
