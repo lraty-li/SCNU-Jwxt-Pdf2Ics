@@ -4,10 +4,15 @@
 
 将华南师范大学教务系统输出的列表形式pdf转为ics文件
 
+[demo](https://lraty-li.github.io/)
+
+[flutter版](https://github.com/lraty-li/SCNU-Jwxt-Pdf2Ics-flutter)
+
 ## 已知问题
 
 - 事件提醒无法正常工作
 - 过长导致换行的课程名只会提取最后一行
+- 无法处理列表版三行课程详情（flutter版进行了简单处理)
 
 ## TODO
 
