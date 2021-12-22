@@ -2,7 +2,7 @@
 
 <img width="314" height="240" src="./But_I_DONT_HAVE_A_CAT.jpg"/>
 
-将华南师范大学教务系统输出的列表形式pdf转为ics文件
+将华南师范大学教务系统输出的pdf转为ics文件
 
 [demo](https://lraty-li.github.io/)
 
