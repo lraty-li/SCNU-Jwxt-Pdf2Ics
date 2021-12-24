@@ -35,6 +35,7 @@ document.getElementById('UpLoadFileInput').onchange = function (event) {
         });
         loadingTask.promise.then(pdf => {
             console.log(pdf)
+            //TODO 多页处理
             pdf.getPage(1).then(function (page) {
                 console.log('Page loaded');
                 //================todo====== 自适应sacle
