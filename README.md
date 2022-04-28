@@ -4,7 +4,7 @@
 
 将华南师范大学教务系统输出的pdf转为ics文件
 
-[demo](https://lraty-li.github.io/)
+[demo](https://lraty-li.github.io/SCNU-Jwxt-Pdf2Ics)
 
 [flutter版](https://github.com/lraty-li/SCNU-Jwxt-Pdf2Ics-flutter)
 
